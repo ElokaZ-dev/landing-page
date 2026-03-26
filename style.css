@@ -1,124 +1,202 @@
+/* Zmienne globalne dla ułatwienia zarządzania paletą barw */
+:root {
+    --primary: #2563eb;        /* Nowoczesny niebieski */
+    --bg-color: #f8fafc;       /* Bardzo jasny szary/niebieski */
+    --surface: #ffffff;        /* Kolor kart i paneli */
+    --text-main: #1e293b;      /* Ciemny łupkowy */
+    --text-muted: #475569;     /* Jaśniejszy szary dla zwykłego tekstu */
+    --sidebar-bg: #0f172a;     /* Ciemny granat */
+    --sidebar-text: #f1f5f9;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
-  box-sizing: border-box; /* Ułatwia zarządzanie szerokością i paddingami */
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  color: #333;
-  background-color: #f8f9fa; /* Delikatnie szare tło strony */
-  
-  /* KLUCZOWY UKŁAD: Flexbox na elemencie body */
-  display: flex;
-  flex-direction: column; /* Układamy elementy z góry na dół */
-  min-height: 100vh; /* Body musi zajmować co najmniej 100% wysokości ekranu */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-color);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-.header{
-    background-color: #ffffff;
-  padding: 20px 40px;
-  display: flex; /* Flexbox do ułożenia logo i menu w jednym rzędzie */
-  justify-content: space-between; /* Rozsuwa logo na lewo, menu na prawo */
-  align-items: center; /* Wyśrodkowuje w pionie */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Delikatny cień pod nagłówkiem */
-  z-index: 10; /* Aby cień padał na sekcję main */
+/* Układ okna głównego */
+.page-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
-.main{
-    /* TO JEST MAGIA: flex: 1 sprawia, że main rośnie i zajmuje całą dostępną przestrzeń */
-  flex: 1; 
-  padding: 40px 20px;
+/* --- Nagłówek --- */
+.header {
+    background-color: var(--surface);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-.main .container{
-    max-width: 800px;
-  margin: 0 auto; /* Wyśrodkowanie na ekranie */
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 8px; /* Zaokrąglone rogi */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.footer{
-    background-color: #2c3e50; /* Ciemnogranatowe tło */
-  color: #ecf0f1; /* Jasny tekst */
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-  margin-top: auto; /* Zabezpieczenie wypychające stopkę na dół */
-}
-
-
-.menu-toggle {
-  display: none;
+.header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .menu-btn {
-  display: inline-block;
-  padding: 15px 20px;
-  background-color: #333;
-  color: white;
-  cursor: pointer;
-  font-size: 18px;
-  position: fixed; /* Przycisk zostaje w miejscu podczas przewijania */
-  top: 10px;
-  left: 10px;
-  z-index: 100; /* Upewniamy się, że przycisk jest zawsze na wierzchu */
-  border-radius: 4px;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color var(--transition);
+}
+
+.menu-btn:hover {
+    background-color: #f1f5f9;
+}
+
+/* --- Treść główna --- */
+.main {
+    flex: 1;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--surface);
+    padding: 48px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+.container h1 {
+    font-size: 2rem;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.container section {
+    margin-bottom: 32px;
+}
+
+.container section:last-child {
+    margin-bottom: 0;
+}
+
+.container h3 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.container p {
+    line-height: 1.7;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+/* --- Stopka --- */
+.footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+/* --- Panel boczny (Sidebar) i mechanika --- */
+.menu-toggle {
+    display: none;
 }
 
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 250px; /* Szerokość panelu */
-  height: 100vh; /* Panel na całą wysokość ekranu */
-  background-color: #222;
-  color: white;
-  padding-top: 60px; /* Miejsce na przycisk menu na górze */
-  
-  /* Panel jest domyślnie przesunięty w lewo poza ekran (ukryty) */
-  transform: translateX(-100%); 
-  
-  /* Płynna animacja wysuwania */
-  transition: transform 0.3s ease-in-out;
-  z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 24px 0;
+    transform: translateX(-100%);
+    transition: transform var(--transition);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+}
+
+.sidebar-header {
+    padding: 0 24px 24px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0 12px;
+    overflow-y: auto;
+}
+
+.sidebar li {
+    margin-bottom: 4px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px 16px;
+    color: #cbd5e1;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.sidebar a.active {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+/* --- Tło przyciemniające (Overlay) --- */
+.overlay {
+    position: fixed;
+    inset: 0; /* Zastępuje top/left/right/bottom: 0 */
+    background-color: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(2px); /* Delikatne rozmycie tła */
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition);
+    z-index: 90;
+    cursor: pointer;
+}
+
+/* Aktywacje po kliknięciu (zaznaczeniu ukrytego checkboxa) */
+.menu-toggle:checked ~ .overlay {
+    opacity: 1;
+    visibility: visible;
 }
 
 .menu-toggle:checked ~ .sidebar {
-  transform: translateX(0); /* Zmiana pozycji na 0 (widoczny) */
-}
-
-.main-content {
-  padding: 80px 20px 20px 20px;
-}
-
-/* --- Wygląd przyciemniającego tła --- */
-.overlay {
-  position: fixed; /* Przykrywa cały ekran niezależnie od przewijania */
-  top: 0;
-  left: 0;
-  width: 100vw; /* 100% szerokości okna */
-  height: 100vh; /* 100% wysokości okna */
-  background-color: rgba(0, 0, 0, 0.6); /* Czarny kolor z 60% przezroczystością */
-  
-  /* Domyślnie tło jest ukryte */
-  opacity: 0;
-  visibility: hidden;
-  
-  /* Płynne pojawianie się i znikanie */
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  
-  /* Z-index musi być mniejszy niż panelu bocznego (99), ale większy niż reszty strony */
-  z-index: 50; 
-  
-  /* Kursor wskazuje, że element jest klikalny */
-  cursor: pointer; 
-}
-
-/* --- MAGIA CSS: Pokaż tło, gdy checkbox jest zaznaczony --- */
-.menu-toggle:checked ~ .overlay {
-  opacity: 1; /* Pełna widoczność */
-  visibility: visible; /* Element staje się aktywny i klikalny */
+    transform: translateX(0);
 }
