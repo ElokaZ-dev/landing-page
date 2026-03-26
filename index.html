@@ -1,44 +1,60 @@
 <!DOCTYPE html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-wikipedia UX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Mini-wikipedia</title>
 </head>
 <body>
-    <header>
-        <h2>Analiza heurystyczna</h2>
-    </header>
-    <main>
-        <div class="container">
-            <h3>Na czym polega metoda heurystyczna?</h3>
-            Heurystyka - a konkretnie 10 zasad heurystycznych sformuowanych przez J. Nielsena
-            oraz Ralfa Molicha w 1990 roku. Są to konkretnie, zasady pomagające nam określić
-            użyteczność naszych projektów w kontekście interakcji użytkownika z komputerem.
-            <h3>Kim był Jakob Nielsen</h3>
-            Emerytowany dyrektor i współzałożyciel Grupy Nielsen Norman. Ustanowił on system "discount
-            usability engineering" dla szybkich i łatwych usprawnień interfejsu użytkownika oraz
-            wynalazł metody heurystyczne.
-        </div>
-    </main>
     <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    <label for="menu-toggle" class="menu-btn">☰</label>
     <label for="menu-toggle" class="overlay"></label>
-    <div class="sidebar">
+
+    <nav class="sidebar">
+        <div class="sidebar-header">Spis treści</div>
         <ul>
-        <li><a href="index.html">Strona główna</a></li>
-        <li><a href="zasada1.html">Zasada 1</a></li>
-        <li>Zasada 2</li>
-        <li>Zasada 3</li>
-        <li>Zasada 4</li>
-        <li>Zasada 5</li>
-        <li>Zasada 6</li>
-        <li>Zasada 7</li>
-        <li>Zasada 8</li>
-        <li>Zasada 9</li>
-        <li>Zasada 10</li>
+            <li><a href="index.html" class="active">Strona główna</a></li>
+            <li><a href="zasada1.html">Zasada 1</a></li>
+            <li><a href="#">Zasada 2</a></li>
+            <li><a href="#">Zasada 3</a></li>
+            <li><a href="#">Zasada 4</a></li>
+            <li><a href="#">Zasada 5</a></li>
+            <li><a href="#">Zasada 6</a></li>
+            <li><a href="#">Zasada 7</a></li>
+            <li><a href="#">Zasada 8</a></li>
+            <li><a href="#">Zasada 9</a></li>
+            <li><a href="#">Zasada 10</a></li>
         </ul>
+    </nav>
+
+    <div class="page-wrapper">
+        <header class="header">
+            <label for="menu-toggle" class="menu-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </label>
+            <h2>Mini-wikipedia</h2>
+        </header>
+
+        <main class="main">
+            <article class="container">
+                <h1>Analiza heurystyczna</h1>
+                
+                <section>
+                    <h3>Na czym polega metoda heurystyczna?</h3>
+                    <p>Heurystyka w projektowaniu to zbiór 10 zasad sformułowanych przez <strong>Jakoba Nielsena</strong> oraz <strong>Ralfa Molicha</strong> w 1990 roku. Są to wytyczne pomagające skutecznie określić użyteczność projektów w kontekście interakcji użytkownika z komputerem i systemami cyfrowymi.</p>
+                </section>
+                
+                <section>
+                    <h3>Kim był Jakob Nielsen?</h3>
+                    <p>Emerytowany dyrektor i współzałożyciel <em>Nielsen Norman Group</em>. Ustanowił on system <strong>"discount usability engineering"</strong> dla szybkich i tanich usprawnień interfejsu użytkownika oraz wynalazł i spopularyzował metody ewaluacji heurystycznej.</p>
+                </section>
+            </article>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Mini-wikipedia. Wszelkie prawa zastrzeżone.</p>
+        </footer>
     </div>
-    <footer>      
-    </footer>
 </body>
 </html>
