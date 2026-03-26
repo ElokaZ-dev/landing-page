@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box; /* Ułatwia zarządzanie szerokością i paddingami */
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+  background-color: #f8f9fa; /* Delikatnie szare tło strony */
+  
+  /* KLUCZOWY UKŁAD: Flexbox na elemencie body */
+  display: flex;
+  flex-direction: column; /* Układamy elementy z góry na dół */
+  min-height: 100vh; /* Body musi zajmować co najmniej 100% wysokości ekranu */
+}
+
+.header{
+    background-color: #ffffff;
+  padding: 20px 40px;
+  display: flex; /* Flexbox do ułożenia logo i menu w jednym rzędzie */
+  justify-content: space-between; /* Rozsuwa logo na lewo, menu na prawo */
+  align-items: center; /* Wyśrodkowuje w pionie */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Delikatny cień pod nagłówkiem */
+  z-index: 10; /* Aby cień padał na sekcję main */
+}
+
+.main{
+    /* TO JEST MAGIA: flex: 1 sprawia, że main rośnie i zajmuje całą dostępną przestrzeń */
+  flex: 1; 
+  padding: 40px 20px;
+}
+
+.main .container{
+    max-width: 800px;
+  margin: 0 auto; /* Wyśrodkowanie na ekranie */
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 8px; /* Zaokrąglone rogi */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.footer{
+    background-color: #2c3e50; /* Ciemnogranatowe tło */
+  color: #ecf0f1; /* Jasny tekst */
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  margin-top: auto; /* Zabezpieczenie wypychające stopkę na dół */
+}
+
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-btn {
+  display: inline-block;
+  padding: 15px 20px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  position: fixed; /* Przycisk zostaje w miejscu podczas przewijania */
+  top: 10px;
+  left: 10px;
+  z-index: 100; /* Upewniamy się, że przycisk jest zawsze na wierzchu */
+  border-radius: 4px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px; /* Szerokość panelu */
+  height: 100vh; /* Panel na całą wysokość ekranu */
+  background-color: #222;
+  color: white;
+  padding-top: 60px; /* Miejsce na przycisk menu na górze */
+  
+  /* Panel jest domyślnie przesunięty w lewo poza ekran (ukryty) */
+  transform: translateX(-100%); 
+  
+  /* Płynna animacja wysuwania */
+  transition: transform 0.3s ease-in-out;
+  z-index: 99;
+}
+
+.menu-toggle:checked ~ .sidebar {
+  transform: translateX(0); /* Zmiana pozycji na 0 (widoczny) */
+}
+
+.main-content {
+  padding: 80px 20px 20px 20px;
+}
+
+/* --- Wygląd przyciemniającego tła --- */
+.overlay {
+  position: fixed; /* Przykrywa cały ekran niezależnie od przewijania */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% szerokości okna */
+  height: 100vh; /* 100% wysokości okna */
+  background-color: rgba(0, 0, 0, 0.6); /* Czarny kolor z 60% przezroczystością */
+  
+  /* Domyślnie tło jest ukryte */
+  opacity: 0;
+  visibility: hidden;
+  
+  /* Płynne pojawianie się i znikanie */
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  
+  /* Z-index musi być mniejszy niż panelu bocznego (99), ale większy niż reszty strony */
+  z-index: 50; 
+  
+  /* Kursor wskazuje, że element jest klikalny */
+  cursor: pointer; 
+}
+
+/* --- MAGIA CSS: Pokaż tło, gdy checkbox jest zaznaczony --- */
+.menu-toggle:checked ~ .overlay {
+  opacity: 1; /* Pełna widoczność */
+  visibility: visible; /* Element staje się aktywny i klikalny */
+}
