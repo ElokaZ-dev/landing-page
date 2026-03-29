@@ -16,6 +16,19 @@
     padding: 0;
 }
 
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    padding: 5px;
+    filter: drop-shadow(8px 0px 10px gray);
+}
+
+figcaption{
+    text-align: center;
+    font-size: small;
+}
+
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     color: var(--text-main);
@@ -72,7 +85,34 @@ body {
 .main {
     flex: 1;
     padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.header-container{
+    display: block;
+    margin: 0 auto;
+    padding: 200px;
+    text-align: center;
+    font-weight: 700;
+    display: inline-block;
+    padding: 20px 50px;
+    background-color: #ececec;
+    border-radius: 20px;     /* Zaokrąglone rogi */
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    color: #2563eb;
+    margin-bottom: 100px;
+}
+
+.eyebrow{
+    font-weight: 400;
+    font-size: medium;
+    color: black;
+}
+
+
 
 .container {
     max-width: 760px;
@@ -92,6 +132,26 @@ body {
 
 .container section {
     margin-bottom: 32px;
+}
+
+.main-content{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img-box{
+    flex: 1;
+}
+
+.img-box img{
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.content-box{
+    flex: 1;
 }
 
 .container section:last-child {
