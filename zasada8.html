@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zasada 8</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="overlay"></label>
+
+    <nav class="sidebar">
+        <div class="sidebar-header">Spis treści</div>
+        <ul>
+            <li><a href="index.html">Strona główna</a></li>
+            <li><a href="zasada1.html">Zasada 1</a></li>
+            <li><a href="zasada2.html">Zasada 2</a></li>
+            <li><a href="zasada3.html">Zasada 3</a></li>
+            <li><a href="zasada4.html">Zasada 4</a></li>
+            <li><a href="zasada5.html">Zasada 5</a></li>
+            <li><a href="zasada6.html">Zasada 6</a></li>
+            <li><a href="zasada7.html">Zasada 7</a></li>
+            <li><a href="zasada8.html" class="active">Zasada 8</a></li>
+            <li><a href="#">Zasada 9</a></li>
+            <li><a href="#">Zasada 10</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-wrapper">
+        <header class="header">
+            <label for="menu-toggle" class="menu-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </label>
+            <h2>Zasady Heurystyki</h2>
+        </header>
+
+        <main class="main">
+            <article class="container">
+                <h1>Zasada 8</h1>
+                <h3>Aesthetics and Minimalist Design</h3>
+                
+                <section>
+                    <h4>Angielski oryginał</h4>
+                    <p>Interfaces should not contain information that is irrelevant or rarely needed. Every extra unit of information in an interface competes with the relevant units of information and diminishes their relative visibility. This heuristic doesn't mean you have to use a flat design — it's about making sure you're keeping the content and visual design focused on the essentials. Ensure that the visual elements of the interface support the user's primary goals.</p>
+                    <p><small>Źródło: <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank">Nielsen Norman Group - 10 Usability Heuristics</a></small></p>
+                </section>
+                
+                <section>
+                    <h4>Polskie tłumaczenie</h4>    
+                    <p>Interfejs powinien zawierać jedynie informacje istotne i potrzebne użytkownikowi. Zawartość strony nie może wzajemnie ze sobą "walczyć" o skupienie odbiorcy. Nie znaczy to, że powinniśmy doprowadzić stronę do czystego tekstu paragraf po paragrafie, jednak podstawą interfejsu jest wypełnienie potrzeb użytkownika.</p>
+                </section>
+
+                <section>
+                    <figure>
+                        <img src="zdjecia/przyklad7-1.png" alt="zdjecie strony glównej Onet.pl">
+                        <figcaption>Kontrprzykład: Strona główna Onet.pl, która atakuje masą reklam. Użytkownik musi zjechać na dół, by dostać się do pożądanych informacji. </figcaption>
+                    </figure>
+                </section>
+                
+                <section>
+                    <figure>
+                        <img src="" alt="">
+                        <figcaption></figcaption>
+                    </figure>
+                </section>
+            </article>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Mini-wikipedia. Wszelkie prawa zastrzeżone.</p>
+        </footer>
+    </div>
+</body>
+</html>
